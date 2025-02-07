@@ -16,6 +16,8 @@ sky_material = SubResource("ProceduralSkyMaterial_jlaap")
 
 [sub_resource type="Environment" id="Environment_2ecs3"]
 background_mode = 2
+background_color = Color(0.742911, 0.823012, 0.567968, 1)
+background_energy_multiplier = 1.54
 sky = SubResource("Sky_0y18s")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D"]
@@ -34,7 +36,7 @@ use_collision = true
 size = Vector3(10, 1, 10)
 
 [node name="AlphaPal3D" parent="." instance=ExtResource("1_1vl7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.420603, 0.568413, 0, 0.803857, 0.594823, -0.707107, -0.420603, 0.568413, 6, 4, 6)
