@@ -11,6 +11,12 @@ func _ready() -> void:
 	_set_random_target()
 
 func _physics_process(delta: float) -> void:
+	# Ensure the navigation map has been synchronized.
+	var nav_map = navigation_agent_3d.get_navigation_map()
+	if NavigationServer3D.map_get_iteration_id(nav_map) == 0:
+		# Navigation map not ready yet – skip processing this frame.
+		return
+	
 	# When we have reached the current target, choose a new random target.
 	if navigation_agent_3d.is_target_reached():
 		_set_random_target()

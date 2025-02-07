@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd5pfl51o0hy1"]
+[gd_scene load_steps=12 format=3 uid="uid://dd5pfl51o0hy1"]
 
 [ext_resource type="PackedScene" uid="uid://y2by6k17p81r" path="res://navigation_alpha_pal_3d.tscn" id="1_1vl7m"]
 [ext_resource type="AudioStream" uid="uid://c5oatnydkhleb" path="res://assets/music/01 - THEM WEATHER BOYS.wav" id="2_0tiy2"]
+[ext_resource type="Script" path="res://time_label.gd" id="3_3kf17"]
+[ext_resource type="Texture2D" uid="uid://c4l0luuui1fb0" path="res://assets/GUI/ADDBALLIDLE.png" id="4_mhklm"]
+[ext_resource type="Texture2D" uid="uid://uu28ry26477q" path="res://assets/GUI/ADDBALLCLICK.png" id="5_hh0ix"]
+[ext_resource type="Script" path="res://add_ball_button.gd" id="6_l4l38"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7ake1"]
 vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
@@ -20,6 +24,8 @@ background_mode = 2
 background_color = Color(0.742911, 0.823012, 0.567968, 1)
 background_energy_multiplier = 1.54
 sky = SubResource("Sky_0y18s")
+
+[sub_resource type="GDScript" id="GDScript_c1q4s"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D"]
 navigation_mesh = SubResource("NavigationMesh_7ake1")
@@ -46,3 +52,24 @@ transform = Transform3D(0.707107, -0.420603, 0.568413, 0, 0.803857, 0.594823, -0
 stream = ExtResource("2_0tiy2")
 volume_db = -7.97
 autoplay = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_c1q4s")
+
+[node name="TimeLabel" type="Label" parent="HUD"]
+offset_right = 296.0
+offset_bottom = 142.0
+script = ExtResource("3_3kf17")
+
+[node name="AddBallButton" type="TextureButton" parent="HUD"]
+z_as_relative = false
+offset_left = 83.0
+offset_top = 453.0
+offset_right = 563.0
+offset_bottom = 713.0
+scale = Vector2(0.553653, 0.553653)
+texture_normal = ExtResource("4_mhklm")
+texture_pressed = ExtResource("5_hh0ix")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_l4l38")
