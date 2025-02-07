@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd5pfl51o0hy1"]
+[gd_scene load_steps=7 format=3 uid="uid://dd5pfl51o0hy1"]
 
 [ext_resource type="PackedScene" uid="uid://y2by6k17p81r" path="res://navigation_alpha_pal_3d.tscn" id="1_1vl7m"]
+[ext_resource type="AudioStream" uid="uid://c5oatnydkhleb" path="res://assets/music/01 - THEM WEATHER BOYS.wav" id="2_0tiy2"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7ake1"]
 vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
@@ -40,3 +41,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.420603, 0.568413, 0, 0.803857, 0.594823, -0.707107, -0.420603, 0.568413, 6, 4, 6)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0tiy2")
+volume_db = -7.97
+autoplay = true
