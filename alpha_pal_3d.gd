@@ -10,7 +10,7 @@ extends CharacterBody3D
 func _ready() -> void:
 	_set_random_target()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Ensure the navigation map has been synchronized.
 	var nav_map = navigation_agent_3d.get_navigation_map()
 	if NavigationServer3D.map_get_iteration_id(nav_map) == 0:
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Smoothly rotate the NPC to face its movement direction.
 	if velocity.length() > 0.1:
-		var target_basis: Basis = Basis().looking_at(velocity, Vector3.UP)
+		var target_basis: Basis = Basis.looking_at(velocity, Vector3.UP)
 		global_transform.basis = global_transform.basis.slerp(target_basis, rotation_smoothing)
 	
 	# Move the NPC using the updated velocity.

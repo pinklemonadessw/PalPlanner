@@ -71,5 +71,5 @@ scale = Vector2(0.553653, 0.553653)
 texture_normal = ExtResource("4_mhklm")
 texture_pressed = ExtResource("5_hh0ix")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 3
 script = ExtResource("6_l4l38")
