@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dd5pfl51o0hy1"]
+[gd_scene load_steps=16 format=3 uid="uid://dd5pfl51o0hy1"]
 
 [ext_resource type="PackedScene" uid="uid://y2by6k17p81r" path="res://navigation_alpha_pal_3d.tscn" id="1_1vl7m"]
 [ext_resource type="AudioStream" uid="uid://c5oatnydkhleb" path="res://assets/music/01 - THEM WEATHER BOYS.wav" id="2_0tiy2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://uu28ry26477q" path="res://assets/GUI/ADDBALLCLICK.png" id="5_hh0ix"]
 [ext_resource type="Script" path="res://add_ball_button.gd" id="6_l4l38"]
 [ext_resource type="Script" path="res://control.gd" id="7_3bxgt"]
+[ext_resource type="Script" path="res://calendar_panel.gd" id="8_hik4u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7ake1"]
 vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
@@ -28,8 +29,12 @@ sky = SubResource("Sky_0y18s")
 
 [sub_resource type="GDScript" id="GDScript_c1q4s"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_c4era"]
-font_size = 35
+[sub_resource type="LabelSettings" id="LabelSettings_43jsm"]
+font_size = 50
+
+[sub_resource type="GDScript" id="GDScript_uufau"]
+script/source = "extends HBoxContainer
+"
 
 [node name="NavigationRegion3D" type="NavigationRegion3D"]
 navigation_mesh = SubResource("NavigationMesh_7ake1")
@@ -95,21 +100,74 @@ grow_vertical = 0
 text = "^"
 
 [node name="CalendarPanel" type="Panel" parent="HUD/Control"]
-offset_left = 70.0
-offset_top = 667.0
-offset_right = 738.0
-offset_bottom = 1193.0
+anchors_preset = -1
+anchor_left = 0.061
+anchor_top = 1.029
+anchor_right = 0.641
+anchor_bottom = 1.841
+offset_left = -0.272003
+offset_top = 0.207947
+offset_right = -0.432007
+offset_bottom = 0.0319824
+grow_horizontal = 2
+script = ExtResource("8_hik4u")
 
 [node name="TaskList" type="Panel" parent="HUD/Control/CalendarPanel"]
-offset_left = 675.0
-offset_right = 1046.0
-offset_bottom = 526.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.01
+anchor_right = 1.566
+anchor_bottom = 1.0
+offset_left = 0.320007
+offset_right = -0.0880127
 
-[node name="Label" type="Label" parent="HUD/Control/CalendarPanel"]
-layout_mode = 0
-offset_right = 668.0
-offset_bottom = 53.0
-text = "Month"
-label_settings = SubResource("LabelSettings_c4era")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Header" type="HBoxContainer" parent="HUD/Control/CalendarPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.131
+offset_bottom = 1.09399
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PrevButton" type="Button" parent="HUD/Control/CalendarPanel/Header"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "<"
+
+[node name="MonthLabel" type="Label" parent="HUD/Control/CalendarPanel/Header"]
+layout_mode = 2
+text = "Month Year"
+label_settings = SubResource("LabelSettings_43jsm")
+
+[node name="NextButton" type="Button" parent="HUD/Control/CalendarPanel/Header"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 10
+text = ">"
+
+[node name="GridContainer" type="GridContainer" parent="HUD/Control/CalendarPanel"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.259
+anchor_right = 1.003
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -0.234009
+offset_right = -0.00402832
+columns = 7
+
+[node name="WeekdayContainer" type="HBoxContainer" parent="HUD/Control/CalendarPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.137
+anchor_right = 0.997
+anchor_bottom = 0.257
+offset_left = -2.0
+offset_top = -0.0620041
+offset_right = 0.00396729
+offset_bottom = -0.182007
+script = SubResource("GDScript_uufau")
