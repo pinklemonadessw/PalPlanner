@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://5d08khrwioql"]
+
+[ext_resource type="Texture2D" uid="uid://doay6s01sl6x7" path="res://assets/GUI/CalenderPanel.png" id="1_6f2lh"]
+[ext_resource type="Script" path="res://calender_panel.gd" id="2_3gfpu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ed1ne"]
+texture = ExtResource("1_6f2lh")
+
+[node name="Panel" type="Panel"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -299.0
+offset_top = -91.0
+offset_right = 297.0
+offset_bottom = 561.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ed1ne")
+script = ExtResource("2_3gfpu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.189
+anchor_right = 0.501
+anchor_bottom = 0.189
+offset_left = -189.596
+offset_top = -23.228
+offset_right = 189.404
+offset_bottom = 385.772
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 7
+
+[node name="Button" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
